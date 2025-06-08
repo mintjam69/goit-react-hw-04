@@ -26,7 +26,7 @@ const SearchBar = ({ onSubmit }) => {
             name="query"
             type="search"
             autoComplete="off"
-            autoFocus
+            // autoFocus
             placeholder="Search images and photos"
           />
           <FiSearch className={styles.searchIcon} />
