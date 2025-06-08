@@ -1,19 +1,58 @@
 .searchForm {
   display: flex;
   justify-content: center;
-  background-color: #8b55f0;
+  background-color: #7f47e7;
   border-radius: 8px;
   padding: 12px;
   margin-bottom: 20px;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.inputWrapper {
+  position: relative;
+  max-width: 400px;
+  width: 100%;
+  display: flex;
+  align-items: center;
 }
 
 .searchInput {
   border-radius: 8px;
   border-style: none;
-  margin-right: 20px;
   padding-block: 8px;
   padding-inline: 12px;
   min-width: 320px;
+  width: 100%;
+  padding-right: 36px; /* місце для іконки */
+  font-size: 16px;
+  height: 40px; /* Додай фіксовану висоту для стабільного центрування */
+}
+
+.searchIcon {
+  position: absolute;
+  right: 12px;
+  height: 20px;
+  width: 20px;
+  color: #646cff;
+  pointer-events: none;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.searchButton {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #646cff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.searchButton:hover {
+  background-color: #4c52d2;
 }
 
 @media (prefers-color-scheme: light) {
@@ -21,9 +60,11 @@
     background-color: #f9f9f9;
     color: #213547;
   }
+
   .searchForm button {
     background-color: #fff;
   }
+
   .searchForm button:hover {
     background-color: #f9f9f9;
   }
