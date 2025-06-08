@@ -1,11 +1,8 @@
 import styles from "./ImageCard.module.css";
 
-const ImageCard = ({ alt_description, urls, updateModalStateData }) => {
+const ImageCard = ({ alt_description, urls }) => {
   return (
-    <div
-      className={styles.cardWrapper}
-      onClick={() => updateModalStateData(urls.regular, alt_description)}
-    >
+    <div className={styles.cardWrapper}>
       <img
         className={styles.cardImage}
         src={urls.small}

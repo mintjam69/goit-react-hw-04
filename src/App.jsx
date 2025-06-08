@@ -22,6 +22,7 @@ function App() {
   const [modalIsOpen, setIsOpen] = useState(false);
   const [modalImage, setModalImage] = useState("");
   const [altDescription, setAltDescription] = useState("");
+  const [likes, setLikes] = useState(null);
 
   const ref = useRef();
 
@@ -33,11 +34,8 @@ function App() {
         setIsLoading(true);
         setIsError(false);
         const data = await fetchGalleryPhotos(queryValue, page);
-        console.log("data: ", data);
         if (data.total === 0) return;
-        setGallery((prevGallery) => {
-          return [...prevGallery, ...data.results];
-        });
+        setGallery((prevGallery) => [...prevGallery, ...data.results]);
         setTotalPages(data.total_pages);
       } catch (error) {
         setIsError(true);
@@ -50,7 +48,6 @@ function App() {
 
   useEffect(() => {
     if (page === 1) return;
-
     ref.current.scrollIntoView({ behavior: "smooth", block: "end" });
   }, [page, gallery]);
 
@@ -61,7 +58,7 @@ function App() {
   };
 
   const handleLoadMore = () => {
-    setPage(page + 1);
+    setPage((prevPage) => prevPage + 1);
   };
 
   const isActive = useMemo(() => page === totalPages, [page, totalPages]);
@@ -74,9 +71,10 @@ function App() {
     setIsOpen(false);
   };
 
-  const updateModalStateData = (src, alt) => {
+  const updateModalStateData = (src, alt, likes) => {
     setModalImage(src);
     setAltDescription(alt);
+    setLikes(likes);
   };
 
   return (
@@ -99,6 +97,7 @@ function App() {
         closeModal={closeModal}
         src={modalImage}
         alt={altDescription}
+        likes={likes}
       />
       <Toaster position="top-right" reverseOrder={true} />
     </div>
